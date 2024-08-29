@@ -65,6 +65,11 @@ fontSize: {
     align-items: center;
     flex-direction: column;
   }
+
+  .collections-container {
+    height: 90vh; /* Full viewport height */
+  }
+
   .shirt {
     height: 30vh; /* Full viewport height */
   }
