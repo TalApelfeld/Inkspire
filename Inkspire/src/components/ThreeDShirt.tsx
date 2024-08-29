@@ -70,9 +70,15 @@ const Shirt: React.FC<{ color: string }> = ({ color }) => {
 
   useEffect(() => {
     if (scene && materials) {
-      // Set the color of the shirt's material
       Object.values(materials).forEach((material) => {
-        material.color = new THREE.Color(color);
+        if (
+          material instanceof THREE.MeshStandardMaterial ||
+          material instanceof THREE.MeshPhongMaterial
+        ) {
+          (
+            material as THREE.MeshStandardMaterial | THREE.MeshPhongMaterial
+          ).color = new THREE.Color(color);
+        }
       });
 
       scene.scale.set(3, 3, 3); // Increase the scale to make the model bigger
